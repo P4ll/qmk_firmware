@@ -17,6 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "quantum.h"
+#include "enums.h"
 
 #ifdef SWAP_HANDS_ENABLE
 __attribute__((weak)) const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
@@ -45,23 +46,53 @@ oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
 static void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-        case 0:
+        case _QWERTY:
             oled_write_ln_P(PSTR("Default"), false);
             break;
-        case 1:
-            oled_write_ln_P(PSTR("Lower"), false);
+        case _NUM:
+            oled_write_ln_P(PSTR("Number"), false);
             break;
-        case 2:
-            oled_write_ln_P(PSTR("Raise"), false);
+        case _SYM:
+            oled_write_ln_P(PSTR("Symbols"), false);
             break;
-        case 3:
+        case _ADJ:
             oled_write_ln_P(PSTR("Adjust"), false);
+            break;
+        case _SWITCH:
+            oled_write_ln_P(PSTR("Switch"), false);
+            break;
+        case _GAME:
+            oled_write_ln_P(PSTR("Game"), false);
+            break;
+        case _WEAPON:
+            oled_write_ln_P(PSTR("Weapon"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
             break;
     }
 }
+
+// static void oled_render_layer_state(void) {
+//     oled_write_P(PSTR("Layer: "), false);
+//     switch (get_highest_layer(layer_state)) {
+//         case 0:
+//             oled_write_ln_P(PSTR("Default"), false);
+//             break;
+//         case 1:
+//             oled_write_ln_P(PSTR("Lower"), false);
+//             break;
+//         case 2:
+//             oled_write_ln_P(PSTR("Raise"), false);
+//             break;
+//         case 3:
+//             oled_write_ln_P(PSTR("Adjust"), false);
+//             break;
+//         default:
+//             oled_write_ln_P(PSTR("Undef"), false);
+//             break;
+//     }
+// }
 
 char     key_name = ' ';
 uint16_t last_keycode;

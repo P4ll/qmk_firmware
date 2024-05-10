@@ -1,0 +1,10 @@
+CONSOLE_ENABLE = no         # Console for debug
+COMMAND_ENABLE = no         # Commands for debug and configuration
+MIDI_ENABLE = no            # MIDI controls
+AUDIO_ENABLE = no           # Audio output on port C6
+RGBLIGHT_ENABLE = no
+RGB_MATRIX_ENABLE = no
+MOUSEKEY_ENABLE = yes     # Mouse keys
+VIA_ENABLE      = yes    # Enable VIA
+LTO_ENABLE      = yes
+COMBO_ENABLE = yes
